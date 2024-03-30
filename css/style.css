@@ -53,3 +53,12 @@ div.highlight-drop {
 .employee > img {
   width: 100px;
 }
+
+.info-panel{
+  position: absolute;
+  padding: 10px;
+  font-size: 12px;
+  background-color: rgba(61, 61, 61, 0.8);
+  color: #fff;
+  z-index: 10;
+}
