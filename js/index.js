@@ -18,7 +18,9 @@ const createPanel = (x, y, name) => {
 allEmployees.addEventListener("contextmenu", (evt) => {
   evt.preventDefault()
   removePanel()
-  const name = evt.target.getAttribute("data-name")
-  const infoPanel = createPanel(evt.clientX - left, evt.clientY - top, name)
-  allEmployees.append(infoPanel)
+  if(evt.target.getAttribute("class") === "employee"){
+    const name = evt.target.getAttribute("data-name")
+    const infoPanel = createPanel(evt.clientX - left, evt.clientY - top, name)
+    allEmployees.append(infoPanel)
+  }
 })
