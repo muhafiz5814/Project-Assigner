@@ -15,7 +15,8 @@ const createPanel = (x, y, name) => {
   return namePanel
 }
 
-allEmployees.addEventListener("click", (evt) => {
+allEmployees.addEventListener("contextmenu", (evt) => {
+  evt.preventDefault()
   removePanel()
   const name = evt.target.getAttribute("data-name")
   const infoPanel = createPanel(evt.clientX - left, evt.clientY - top, name)
