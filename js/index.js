@@ -3,11 +3,18 @@ const taskForce = document.querySelector('.task-force');
 const employeeCards = document.querySelectorAll('.employee');
 const { top, left } = allEmployees.getBoundingClientRect();
 
-allEmployees.addEventListener("click", (evt) => {
+const createPanel = (x, y, name) => {
   const namePanel = document.createElement("div")
   namePanel.setAttribute("class", "info-panel")
-  namePanel.innerText = evt.target.getAttribute("data-name")
-  namePanel.style.left = `${evt.clientX - left}px`
-  namePanel.style.top = `${evt.clientY - top}px`
-  allEmployees.append(namePanel)
+  namePanel.innerText = name
+  namePanel.style.left = `${x}px`
+  namePanel.style.top = `${y}px`
+
+  return namePanel
+}
+
+allEmployees.addEventListener("click", (evt) => {
+  const name = evt.target.getAttribute("data-name")
+  const infoPanel = createPanel(evt.clientX - left, evt.clientY - top, name)
+  allEmployees.append(infoPanel)
 })
