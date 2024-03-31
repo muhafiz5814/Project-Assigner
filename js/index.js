@@ -73,3 +73,33 @@ taskForce.addEventListener("drop", (evt) => {
 taskForce.addEventListener("dragover", (evt) => {
   evt.preventDefault()
 })
+
+/** Add the dragenter event listener to the allEmployees div and change it's styling to indicate that it is the dropping place. */
+allEmployees.addEventListener("dragenter", (evt) => {
+  /** Prevent the default behaviour. */
+  evt.preventDefault()
+  /** Add the highlight-drop class to the allEmployees to apply the styling dynamically. */
+  evt.currentTarget.classList.add("highlight-drop")  // allEmployees.classList.add("highlight-drop") can also be used.
+})
+
+/** Add the dragleave event listener to the allEmployees to remove the dynamically add styling and come back to normal styling when the drop area is left. */
+allEmployees.addEventListener("dragleave", (evt) => {
+  /** Prevent the default behaviour. */
+  evt.preventDefault()
+  /** Remove the highlight-drop class from allEmployees */
+  evt.currentTarget.classList.remove("highlight-drop")
+})
+
+/** Add the drop event listener to the allEmployees and make the employee display in allEmployees. */
+allEmployees.addEventListener("drop", (evt) => {
+  /** Get the employee's data-id from the dataTransfer object, then select the element from document and append it as the child of the allEmployees.*/
+  const empId = evt.dataTransfer.getData("text/plain")
+  evt.currentTarget.appendChild(document.querySelector(`div[data-id="${empId}"]`))
+  /** Remove the highlight-drop class from allEmployees */
+  evt.currentTarget.classList.remove("highlight-drop")
+})
+
+/** Add the dragover event listener to the allEmployees and prevent it's default action to allow the employee divs to get droppd in allEmployees. */
+allEmployees.addEventListener("dragover", (evt) => {
+  evt.preventDefault()
+})
